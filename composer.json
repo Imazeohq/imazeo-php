@@ -1,0 +1,51 @@
+{
+  "name": "imazeo/sdk",
+  "description": "Official Imazeo PHP SDK for server-side image, transform, PDF, QR, and barcode APIs",
+  "type": "library",
+  "license": "MIT",
+  "version": "1.0.0",
+  "keywords": [
+    "imazeo",
+    "images",
+    "transforms",
+    "pdf",
+    "qr",
+    "barcode",
+    "sdk"
+  ],
+  "homepage": "https://packagist.org/packages/imazeo/sdk",
+  "support": {
+    "issues": "https://github.com/manishbalodia/imazeo-php/issues",
+    "source": "https://github.com/manishbalodia/imazeo-php"
+  },
+  "authors": [
+    {
+      "name": "Imazeo",
+      "homepage": "https://imazeo.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Imazeo\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Imazeo\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
