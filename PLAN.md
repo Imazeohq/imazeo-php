@@ -13,5 +13,5 @@ Scope: API-key resources only (`context`, `images`, `transforms`, `qr`,
 
 Reference: `../sdk-typescript/` and `../docs/SDK_BEHAVIOR.md`.
 Package name `imazeo/sdk` is free on Packagist (vendor `imazeo` empty as of
-prep). Publish by tagging `v1.0.0` on `manishbalodia/imazeo-php` and submitting
+prep). Publish by tagging `v1.0.0` on `Imazeohq/imazeo-php` and submitting
 that repo on Packagist.

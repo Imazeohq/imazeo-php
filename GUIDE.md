@@ -9,7 +9,7 @@ composer require imazeo/sdk
 ```
 
 Package: [`imazeo/sdk`](https://packagist.org/packages/imazeo/sdk) on Packagist.
-Source: [manishbalodia/imazeo-php](https://github.com/manishbalodia/imazeo-php).
+Source: [Imazeohq/imazeo-php](https://github.com/Imazeohq/imazeo-php).
 Use the package README for runtime details.
 
 Create a Customer account, complete required verification, create a project and

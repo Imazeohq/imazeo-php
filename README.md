@@ -10,7 +10,7 @@ Official **server-side** PHP SDK for Imazeo.
 | Supported APIs | `v1`                                  |
 | Runtime        | PHP **8.2+** (`ext-curl`, `ext-json`) |
 | Registry       | [Packagist](https://packagist.org/packages/imazeo/sdk) |
-| Source         | [GitHub](https://github.com/manishbalodia/imazeo-php) |
+| Source         | [GitHub](https://github.com/Imazeohq/imazeo-php) |
 
 > **Security:** Secret API keys (`X-API-Key`) are for trusted servers only.
 > Do **not** ship this client with a secret key in browsers or front-end code.
