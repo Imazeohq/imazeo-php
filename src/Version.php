@@ -7,7 +7,7 @@ namespace Imazeo;
 /** Derived from composer.json; keep in sync with package version. */
 final class Version
 {
-    public const SDK_VERSION = '1.0.2';
+    public const SDK_VERSION = '1.0.3';
 
     public const DEFAULT_API_VERSION = 'v1';
 
