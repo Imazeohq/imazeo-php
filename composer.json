@@ -3,7 +3,7 @@
   "description": "Official Imazeo PHP SDK for server-side image, transform, PDF, QR, and barcode APIs",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "imazeo",
     "images",
