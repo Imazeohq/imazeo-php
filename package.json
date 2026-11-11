@@ -1,7 +1,7 @@
 {
   "name": "imazeo-php",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Release tooling for the Imazeo PHP SDK (not an npm package)",
   "scripts": {
     "release": "node scripts/release.mjs"
