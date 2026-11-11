@@ -6,3 +6,4 @@ composer.phar
 coverage/
 *.phar
 .DS_Store
+node_modules/

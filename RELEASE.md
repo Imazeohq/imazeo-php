@@ -2,43 +2,42 @@
 
 Independent repository: [Imazeohq/imazeo-php](https://github.com/Imazeohq/imazeo-php).  
 Packagist package: [`imazeo/sdk`](https://packagist.org/packages/imazeo/sdk).  
-Supported API prefix: `v1`. SemVer lives in this repo (`composer.json` + `src/Version.php`)
-and is published from git tag `v1.0.0`.
+Supported API prefix: `v1`. SemVer lives in `composer.json`, `src/Version.php`, and `package.json`
+(kept in sync by the release script). Published from git tag `v*`.
 
-Do not publish automatically from CI until a protected release workflow is added.
-Never overwrite a published version; ship a patch instead.
+Never reuse a published tag; ship a patch instead.
 
-## Pre-publish checks
+## One-time: Packagist
+
+1. On Packagist → package **imazeo/sdk** → enable the **GitHub webhook**.
+2. GitHub → **Settings → Secrets** for `Imazeohq/imazeo-php`:
+
+| Secret | Value |
+| --- | --- |
+| `PACKAGIST_USERNAME` | Packagist username |
+| `PACKAGIST_TOKEN` | Packagist API token |
+
+## Release (PowerShell)
+
+Commit your work on `main` first (clean working tree required). One-time: `npm install`.
 
 ```powershell
-cd D:\projects\imazeo\sdk-php
-python scripts\check-release.py
-php composer.phar validate --strict
-php composer.phar install
-php composer.phar audit
-php composer.phar test
+$env:RELEASE_MODE = "true"
+npm run release
 ```
 
-## Manual publish (first release `1.0.0`)
+You will be prompted for version bump and GitHub Release.  
+This syncs versions, commits, tags `vX.Y.Z`, and pushes.  
+**Publish Packagist** then verifies the tag and notifies Packagist.
 
-1. Create empty public GitHub repo `Imazeohq/imazeo-php` and push this tree to `main`.
-2. Tag and push: `git tag v1.0.0` then `git push origin main` and `git push origin v1.0.0`.
-3. Create a [Packagist](https://packagist.org) account (GitHub login recommended).
-4. Submit the package: **Submit** → repository URL  
-   `https://github.com/Imazeohq/imazeo-php`
-5. Confirm Packagist creates vendor `imazeo` and package `imazeo/sdk` from tag `v1.0.0`.
-6. Optional but recommended: enable **GitHub Service Hook / Packagist webhook** so new tags auto-update.
-7. Verify: `composer show imazeo/sdk` / https://packagist.org/packages/imazeo/sdk
+## Release from GitHub only
+
+If the version bump is already on `main`:
+
+1. **Releases** → Draft a new release → tag `vX.Y.Z` → Publish  
+   or
+2. **Actions** → **Publish Packagist** → **Run workflow**
 
 ## After publish
 
-Smoke-install in a temp project:
-
-```powershell
-mkdir $env:TEMP\imazeo-php-smoke
-cd $env:TEMP\imazeo-php-smoke
-composer require imazeo/sdk:1.0.0
-```
-
-If the release is bad, abandon the version on Packagist and ship a reviewed patch
-tag — do not reuse `v1.0.0`.
+Verify: https://packagist.org/packages/imazeo/sdk

@@ -10,6 +10,7 @@ use Imazeo\Errors\ValidationError;
 use Imazeo\Http\HttpHandlerInterface;
 use Imazeo\Http\Transport;
 use Imazeo\Imazeo;
+use Imazeo\Version;
 use PHPUnit\Framework\TestCase;
 
 final class MockHttpHandler implements HttpHandlerInterface
@@ -136,7 +137,7 @@ final class ClientTest extends TestCase
         $req = $handler->requests[0];
         $this->assertSame('https://api.example.com/v1/api-key/context', $req['url']);
         $this->assertSame('secret-key', $req['headers']['X-API-Key']);
-        $this->assertMatchesRegularExpression('#^Imazeo-PHP/1\.0\.0#', $req['headers']['User-Agent']);
+        $this->assertSame('Imazeo-PHP/' . Version::SDK_VERSION, $req['headers']['User-Agent']);
         $this->assertArrayNotHasKey('Authorization', $req['headers']);
     }
 

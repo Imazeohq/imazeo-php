@@ -32,7 +32,7 @@ if ($bytes === false) {
 
 $options = [
     'apiKey' => $apiKey,
-    'baseUrl' => getenv('IMAZEO_BASE_URL') ?: 'http://localhost:3001',
+    'baseUrl' => getenv('IMAZEO_BASE_URL') ?: 'https://api.imazeo.com',
 ];
 $projectId = getenv('IMAZEO_PROJECT_ID');
 if (is_string($projectId) && $projectId !== '') {
