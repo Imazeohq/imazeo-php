@@ -53,7 +53,7 @@ final class Multipart
      * @param list<array{field: string, upload: PreparedUpload}> $files
      * @return array{body: string, contentType: string}
      */
-    public static function build(array $files): array
+    public static function build(array $files, array $fields = []): array
     {
         $boundary = '----ImazeoBoundary' . bin2hex(random_bytes(16));
         $body = '';
@@ -68,6 +68,10 @@ final class Multipart
             $body .= $upload->bytes . "\r\n";
         }
 
+        foreach ($fields as $name => $value) {
+            $name = self::escapeFilename((string) $name);
+            $body .= "--{$boundary}\r\nContent-Disposition: form-data; name=\"{$name}\"\r\n\r\n{$value}\r\n";
+        }
         $body .= "--{$boundary}--\r\n";
 
         return [

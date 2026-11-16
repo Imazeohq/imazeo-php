@@ -26,7 +26,7 @@ final class TransformsResource
      *   transform?: array<string, mixed>
      * } $request
      */
-    public function create(array $request): BinaryResult
+    public function create(array $request, array $processing = []): BinaryResult
     {
         $hasImageId = isset($request['imageId']) && $request['imageId'] !== '';
         $hasUrl = isset($request['url']) && $request['url'] !== '';
@@ -45,7 +45,7 @@ final class TransformsResource
             'POST',
             $url,
             $body,
-            ['Content-Type' => 'application/json', 'Accept' => '*/*'],
+            array_merge(['Content-Type' => 'application/json', 'Accept' => '*/*'], \Imazeo\Types\ProcessingOptions::headers($processing)),
         );
     }
 

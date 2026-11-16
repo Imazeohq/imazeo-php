@@ -39,8 +39,8 @@ jobs:
           PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
         run: |
           if [ -z "$PACKAGIST_USERNAME" ] || [ -z "$PACKAGIST_TOKEN" ]; then
-            echo "PACKAGIST_USERNAME / PACKAGIST_TOKEN not set; relying on Packagist GitHub webhook."
-            exit 0
+            echo "Missing PACKAGIST_USERNAME / PACKAGIST_TOKEN secrets"
+            exit 1
           fi
           curl -fsS -X POST \
             "https://packagist.org/api/update-package?username=${PACKAGIST_USERNAME}&apiToken=${PACKAGIST_TOKEN}" \
