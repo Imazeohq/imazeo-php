@@ -5,7 +5,7 @@ Official **server-side** PHP SDK for Imazeo.
 |                |                                                        |
 | -------------- | ------------------------------------------------------ |
 | Package        | `imazeo/sdk`                                           |
-| SDK version    | `1.0.3`                                                |
+| SDK version    | `1.1.0`                                                |
 | Default API    | `v1`                                                   |
 | Supported APIs | `v1`                                                   |
 | Runtime        | PHP **8.2+** (`ext-curl`, `ext-json`)                  |
@@ -146,12 +146,12 @@ try {
 | `appName`     | —                        | Appended to User-Agent                 |
 | `httpHandler` | curl                     | Tests / custom transport               |
 
-User-Agent: `Imazeo-PHP/1.0.0`.
+User-Agent: `Imazeo-PHP/1.1.0`.
 
 ## API version vs package version
 
 - **API** path version: `v1` (configured via `apiVersion`)
-- **SDK** SemVer: `composer.json` → `1.0.0`
+- **SDK** SemVer: `composer.json` → `1.1.0`
 
 `Imazeo::apiCompatibility()` reports supported API versions.
 
