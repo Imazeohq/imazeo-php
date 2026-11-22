@@ -2,15 +2,15 @@
 
 Official **server-side** PHP SDK for Imazeo.
 
-|                |                                       |
-| -------------- | ------------------------------------- |
-| Package        | `imazeo/sdk`                          |
-| SDK version    | `1.0.0`                               |
-| Default API    | `v1`                                  |
-| Supported APIs | `v1`                                  |
-| Runtime        | PHP **8.2+** (`ext-curl`, `ext-json`) |
+|                |                                                        |
+| -------------- | ------------------------------------------------------ |
+| Package        | `imazeo/sdk`                                           |
+| SDK version    | `1.1.0`                                                |
+| Default API    | `v1`                                                   |
+| Supported APIs | `v1`                                                   |
+| Runtime        | PHP **8.2+** (`ext-curl`, `ext-json`)                  |
 | Registry       | [Packagist](https://packagist.org/packages/imazeo/sdk) |
-| Source         | [GitHub](https://github.com/Imazeohq/imazeo-php) |
+| Source         | [GitHub](https://github.com/Imazeohq/imazeo-php)       |
 
 > **Security:** Secret API keys (`X-API-Key`) are for trusted servers only.
 > Do **not** ship this client with a secret key in browsers or front-end code.
@@ -70,14 +70,20 @@ Sends `X-API-Key` only. Never send `Authorization` together with an API key
 
 ## Resources
 
-| Resource              | Methods                                                                       |
-| --------------------- | ----------------------------------------------------------------------------- |
-| `$client->context`    | `get()` → project/key environment                                             |
-| `$client->images`     | `upload`, `list` (`page`/`limit`/`q`), `get`, `delete`, `download`            |
-| `$client->transforms` | `create`, `list`, `get`, `download` (`ifNoneMatch` → `notModified`), `delete` |
-| `$client->qr`         | `generate`                                                                    |
-| `$client->barcodes`   | `generate`                                                                    |
-| `$client->pdf`        | `info`, `render`, `merge`, `extract`                                          |
+| Resource                | Methods                                                                                               |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| `$client->context`      | `get()` → project/key environment                                                                     |
+| `$client->images`       | `upload`, `list` (`page`/`limit`/`q`), `get`, `delete`, `download`                                    |
+| `$client->transforms`   | `create`, `list`, `get`, `download` (`ifNoneMatch` → `notModified`), `delete`                         |
+| `$client->qr`           | `generate`                                                                                            |
+| `$client->barcodes`     | `generate`                                                                                            |
+| `$client->pdf`          | `info`, `render`, `merge`, `extract`                                                                  |
+| `$client->credits`      | Quote processing credits for an operation and measurable units                                        |
+| `$client->operations`   | Get status, look up by kind/key, and recover a temporary result                                       |
+| `$client->conversions`  | DOCX, XLSX, PPTX and website jobs: capabilities, submit, list, lookup, get, cancel, download and save |
+| `$client->dynamicCodes` | Capabilities, create, list, get, edit, scan analytics and CSV export                                  |
+| `$client->artifacts`    | Save preview bytes, list, get, download and delete private artifacts                                  |
+| `$client->outputs`      | List project outputs and retrieve counts by type                                                      |
 
 ### Upload + transform
 
@@ -140,12 +146,12 @@ try {
 | `appName`     | —                        | Appended to User-Agent                 |
 | `httpHandler` | curl                     | Tests / custom transport               |
 
-User-Agent: `Imazeo-PHP/1.0.0`.
+User-Agent: `Imazeo-PHP/1.1.0`.
 
 ## API version vs package version
 
 - **API** path version: `v1` (configured via `apiVersion`)
-- **SDK** SemVer: `composer.json` → `1.0.0`
+- **SDK** SemVer: `composer.json` → `1.1.0`
 
 `Imazeo::apiCompatibility()` reports supported API versions.
 

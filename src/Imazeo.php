@@ -7,6 +7,12 @@ namespace Imazeo;
 use Imazeo\Http\CurlHttpHandler;
 use Imazeo\Http\HttpHandlerInterface;
 use Imazeo\Http\Transport;
+use Imazeo\Resources\CreditsResource;
+use Imazeo\Resources\OperationsResource;
+use Imazeo\Resources\OutputsResource;
+use Imazeo\Resources\DynamicCodesResource;
+use Imazeo\Resources\ArtifactsResource;
+use Imazeo\Resources\ConversionsResource;
 use Imazeo\Resources\BarcodesResource;
 use Imazeo\Resources\ContextResource;
 use Imazeo\Resources\ImagesResource;
@@ -31,6 +37,18 @@ final class Imazeo
     public readonly QrResource $qr;
 
     public readonly BarcodesResource $barcodes;
+
+    public readonly CreditsResource $credits;
+
+    public readonly OperationsResource $operations;
+
+    public readonly OutputsResource $outputs;
+
+    public readonly DynamicCodesResource $dynamicCodes;
+
+    public readonly ArtifactsResource $artifacts;
+
+    public readonly ConversionsResource $conversions;
 
     public readonly PdfResource $pdf;
 
@@ -76,6 +94,12 @@ final class Imazeo
         $this->transforms = new TransformsResource($this->http, $resolveProjectId);
         $this->qr = new QrResource($this->http, $resolveProjectId);
         $this->barcodes = new BarcodesResource($this->http, $resolveProjectId);
+        $this->credits = new CreditsResource($this->http, $resolveProjectId);
+        $this->operations = new OperationsResource($this->http, $resolveProjectId);
+        $this->outputs = new OutputsResource($this->http, $resolveProjectId);
+        $this->dynamicCodes = new DynamicCodesResource($this->http, $resolveProjectId);
+        $this->artifacts = new ArtifactsResource($this->http, $resolveProjectId);
+        $this->conversions = new ConversionsResource($this->http, $resolveProjectId);
         $this->pdf = new PdfResource($this->http, $resolveProjectId);
     }
 

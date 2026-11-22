@@ -216,8 +216,9 @@ final class Transport
         ?int $uploadLength = null,
         array $headers = [],
         ?int $timeoutMs = null,
+        array $fields = [],
     ): array {
-        $multipart = Multipart::build($files);
+        $multipart = Multipart::build($files, $fields);
         $reqHeaders = array_merge([
             'Accept' => 'application/json',
             'X-API-Key' => $this->config->apiKey,

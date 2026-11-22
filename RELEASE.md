@@ -9,13 +9,14 @@ Never reuse a published tag; ship a patch instead.
 
 ## One-time: Packagist
 
-1. On Packagist → package **imazeo/sdk** → enable the **GitHub webhook**.
-2. GitHub → **Settings → Secrets** for `Imazeohq/imazeo-php`:
+GitHub → **Settings → Secrets** for `Imazeohq/imazeo-php`:
 
 | Secret | Value |
 | --- | --- |
 | `PACKAGIST_USERNAME` | Packagist username |
-| `PACKAGIST_TOKEN` | Packagist API token |
+| `PACKAGIST_TOKEN` | Packagist profile → **API Token** |
+
+Also on Packagist → package **imazeo/sdk** → enable the **GitHub webhook** (auto-update).
 
 ## Release (PowerShell)
 

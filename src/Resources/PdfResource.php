@@ -35,6 +35,7 @@ final class PdfResource
             'POST',
             $url,
             [['field' => 'file', 'upload' => $prepared]],
+            headers: \Imazeo\Types\ProcessingOptions::headers($options),
             timeoutMs: Version::PDF_TIMEOUT_MS,
         );
 
@@ -94,6 +95,7 @@ final class PdfResource
             'POST',
             $url,
             [['field' => 'file', 'upload' => $prepared]],
+            headers: \Imazeo\Types\ProcessingOptions::headers($options),
             timeoutMs: Version::PDF_TIMEOUT_MS,
         );
 
@@ -115,7 +117,7 @@ final class PdfResource
     /**
      * @param list<string|resource|array{data: string, filename?: string, contentType?: string}> $sources
      */
-    public function merge(array $sources): BinaryResult
+    public function merge(array $sources, array $options = []): BinaryResult
     {
         if ($sources === []) {
             throw new \InvalidArgumentException('At least one PDF is required');
@@ -134,6 +136,7 @@ final class PdfResource
             'POST',
             $url,
             $files,
+            headers: \Imazeo\Types\ProcessingOptions::headers($options),
             timeoutMs: Version::PDF_TIMEOUT_MS,
         );
         if (!$result instanceof BinaryResult) {
@@ -177,6 +180,7 @@ final class PdfResource
             'POST',
             $url,
             [['field' => 'file', 'upload' => $prepared]],
+            headers: \Imazeo\Types\ProcessingOptions::headers($options),
             timeoutMs: Version::PDF_TIMEOUT_MS,
         );
         if (!$result instanceof BinaryResult) {

@@ -21,6 +21,8 @@ final class BarcodesResource
      * @param array{
      *   type: 'code128'|'code39'|'ean13'|'ean8'|'upca'|'itf14',
      *   content: string,
+     *   transparent?: bool,
+     *   design?: array<string, mixed>,
      *   format?: 'png'|'svg',
      *   scale?: int,
      *   height?: int,
@@ -29,7 +31,7 @@ final class BarcodesResource
      *   background?: string
      * } $input
      */
-    public function generate(array $input): BinaryResult
+    public function generate(array $input, array $processing = []): BinaryResult
     {
         $projectId = ($this->projectId)();
         $url = $this->http->path(['projects', $projectId, 'tools', 'barcode']);
@@ -39,7 +41,7 @@ final class BarcodesResource
             'POST',
             $url,
             $body,
-            ['Content-Type' => 'application/json', 'Accept' => '*/*'],
+            array_merge(['Content-Type' => 'application/json', 'Accept' => '*/*'], \Imazeo\Types\ProcessingOptions::headers($processing)),
             Version::LIGHT_TIMEOUT_MS,
         );
     }

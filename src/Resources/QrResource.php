@@ -20,6 +20,8 @@ final class QrResource
     /**
      * @param array{
      *   content: string,
+     *   transparent?: bool,
+     *   design?: array<string, mixed>,
      *   format?: string,
      *   size?: int,
      *   margin?: int,
@@ -28,7 +30,7 @@ final class QrResource
      *   background?: string
      * } $input
      */
-    public function generate(array $input): BinaryResult
+    public function generate(array $input, array $processing = []): BinaryResult
     {
         $projectId = ($this->projectId)();
         $url = $this->http->path(['projects', $projectId, 'tools', 'qr']);
@@ -38,7 +40,7 @@ final class QrResource
             'POST',
             $url,
             $body,
-            ['Content-Type' => 'application/json', 'Accept' => '*/*'],
+            array_merge(['Content-Type' => 'application/json', 'Accept' => '*/*'], \Imazeo\Types\ProcessingOptions::headers($processing)),
             Version::LIGHT_TIMEOUT_MS,
         );
     }
